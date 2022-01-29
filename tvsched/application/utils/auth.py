@@ -12,4 +12,3 @@ def hash_password(password: str) -> str:
     """
 
     return bcrypt.hash(password)
-
