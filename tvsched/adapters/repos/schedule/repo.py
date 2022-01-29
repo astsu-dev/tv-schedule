@@ -159,7 +159,10 @@ class ScheduleRepo:
         VALUES (:user_id, :episode_id);
         """
 
-        values = dict(user_id=episode_in_schedule.user_id, episode_id=episode_in_schedule.episode_id)
+        values = dict(
+            user_id=episode_in_schedule.user_id,
+            episode_id=episode_in_schedule.episode_id,
+        )
 
         try:
             await self._db.execute(query, values)
@@ -183,24 +186,10 @@ class ScheduleRepo:
         WHERE user_id = :user_id AND episode_id = :episode_id;
         """
 
-        values = dict(user_id=episode_in_schedule.user_id, episode_id=episode_in_schedule.episode_id)
+        values = dict(
+            user_id=episode_in_schedule.user_id,
+            episode_id=episode_in_schedule.episode_id,
+        )
 
         await self._db.execute(query, values)
-
-    async def get_first_unwatched_episodes_from_schedule(
-        self, user_id: uuid.UUID
-    ) -> list[Episode]:
-        """Returns list of first unwatched episodes
-        for each show from schedule from repo.
-
-        Args:
-            user_id (uuid.UUID): user schedule id
-
-        Returns:
-            list[Episode]
-        """
-
-        query = """
-
-        """
 
