@@ -8,6 +8,7 @@ class UserNotFoundError(Exception):
     def username(self) -> str:
         return self._username
 
+
 class UserAlreadyExistsError(Exception):
     """Will be raised when trying to add existed user to repo."""
 
