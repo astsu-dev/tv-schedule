@@ -4,25 +4,28 @@ import enum
 class ActorPermission(enum.Enum):
     """Permissions for auth endpoint."""
 
+    CREATE = enum.auto()
     READ = enum.auto()
-    WRITE = enum.auto()
-    EDIT = enum.auto()
+    UPDATE = enum.auto()
+    DELETE = enum.auto()
 
 
 class ShowPermission(enum.Enum):
     """Permissions for show endpoint."""
 
+    CREATE = enum.auto()
     READ = enum.auto()
-    WRITE = enum.auto()
-    EDIT = enum.auto()
+    UPDATE = enum.auto()
+    DELETE = enum.auto()
 
 
 class EpisodePermission(enum.Enum):
     """Permissions for episode endpoint."""
 
+    CREATE = enum.auto()
     READ = enum.auto()
-    WRITE = enum.auto()
-    EDIT = enum.auto()
+    UPDATE = enum.auto()
+    DELETE = enum.auto()
 
 
 class Role(str, enum.Enum):
@@ -37,8 +40,8 @@ roles = {
         ActorPermission.READ, ShowPermission.READ, EpisodePermission.READ
     },
     Role.ADMIN: {
-        ActorPermission.READ, ActorPermission.WRITE, ActorPermission.EDIT,
-        ShowPermission.READ, ShowPermission.WRITE, ShowPermission.EDIT,
-        EpisodePermission.READ, EpisodePermission.WRITE, EpisodePermission.EDIT
+        ActorPermission.CREATE, ActorPermission.READ, ActorPermission.UPDATE, ActorPermission.DELETE,
+        ShowPermission.CREATE, ShowPermission.READ, ShowPermission.UPDATE, ShowPermission.DELETE,
+        EpisodePermission.CREATE, EpisodePermission.READ, EpisodePermission.UPDATE, EpisodePermission.DELETE
     }
 }
