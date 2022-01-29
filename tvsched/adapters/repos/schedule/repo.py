@@ -192,4 +192,3 @@ class ScheduleRepo:
         )
 
         await self._db.execute(query, values)
-

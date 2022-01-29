@@ -36,12 +36,19 @@ class Role(str, enum.Enum):
 
 
 roles = {
-    Role.USER: {
-        ActorPermission.READ, ShowPermission.READ, EpisodePermission.READ
-    },
+    Role.USER: {ActorPermission.READ, ShowPermission.READ, EpisodePermission.READ},
     Role.ADMIN: {
-        ActorPermission.CREATE, ActorPermission.READ, ActorPermission.UPDATE, ActorPermission.DELETE,
-        ShowPermission.CREATE, ShowPermission.READ, ShowPermission.UPDATE, ShowPermission.DELETE,
-        EpisodePermission.CREATE, EpisodePermission.READ, EpisodePermission.UPDATE, EpisodePermission.DELETE
-    }
+        ActorPermission.CREATE,
+        ActorPermission.READ,
+        ActorPermission.UPDATE,
+        ActorPermission.DELETE,
+        ShowPermission.CREATE,
+        ShowPermission.READ,
+        ShowPermission.UPDATE,
+        ShowPermission.DELETE,
+        EpisodePermission.CREATE,
+        EpisodePermission.READ,
+        EpisodePermission.UPDATE,
+        EpisodePermission.DELETE,
+    },
 }

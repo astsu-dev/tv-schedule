@@ -172,7 +172,9 @@ async def test_mark_episode_as_watched_use_case_when_episode_or_schedule_does_no
     use_case = MarkEpisodeAsWatchedUseCase(repo, logger)
 
     episode_in_schedule = EpisodeInSchedule(episode_id=5, user_id=uuid.uuid4())
-    repo.mark_episode_as_watched.side_effect = EpisodeOrScheduleNotFoundError(episode_in_schedule)
+    repo.mark_episode_as_watched.side_effect = EpisodeOrScheduleNotFoundError(
+        episode_in_schedule
+    )
 
     with pytest.raises(EpisodeOrScheduleNotFoundError):
         await use_case.execute(episode_in_schedule)
@@ -188,7 +190,9 @@ async def test_mark_episode_as_watched_use_case_when_episode_already_marked() ->
     use_case = MarkEpisodeAsWatchedUseCase(repo, logger)
 
     episode_in_schedule = EpisodeInSchedule(episode_id=5, user_id=uuid.uuid4())
-    repo.mark_episode_as_watched.side_effect = EpisodeAlreadyMarkedAsWatchedError(episode_in_schedule)
+    repo.mark_episode_as_watched.side_effect = EpisodeAlreadyMarkedAsWatchedError(
+        episode_in_schedule
+    )
 
     with pytest.raises(EpisodeAlreadyMarkedAsWatchedError):
         await use_case.execute(episode_in_schedule)
