@@ -7,7 +7,9 @@ from tvsched.application.models.schedule import EpisodeInSchedule
 class IMarkEpisodeAsUnwatchedUseCaseRepo(Protocol):
     """"""
 
-    async def mark_episode_as_unwatched(self, episode_in_schedule: EpisodeInSchedule) -> None:
+    async def mark_episode_as_unwatched(
+        self, episode_in_schedule: EpisodeInSchedule
+    ) -> None:
         """Marks episode with `episode_id` as unwatched in repo.
 
         Args:
