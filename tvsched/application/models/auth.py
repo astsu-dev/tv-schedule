@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+import uuid
 
 from tvsched.entities.auth import Role
 
@@ -21,9 +22,27 @@ class UserWithRoleAdd:
 
 
 @dataclass(frozen=True)
-class UserInRepo:
+class UserLogIn:
+    """Data for log in user"""
+
+    username: str
+    password: str
+
+
+@dataclass(frozen=True)
+class UserInRepoAdd:
     """Data for adding user to repo."""
 
+    username: str
+    password_hash: str
+    role: Role
+
+
+@dataclass(frozen=True)
+class UserInRepo:
+    """Data in repo about user."""
+
+    id: uuid.UUID
     username: str
     password_hash: str
     role: Role

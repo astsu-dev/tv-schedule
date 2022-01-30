@@ -3,7 +3,7 @@ from unittest import mock
 import pytest
 from tvsched.application.exceptions.auth import UserAlreadyExistsError
 
-from tvsched.application.models.auth import UserAdd, UserWithRoleAdd, UserInRepo
+from tvsched.application.models.auth import UserAdd, UserWithRoleAdd, UserInRepoAdd
 from tvsched.application.use_cases.auth.add_user_use_case import AddUserUseCase
 from tvsched.application.use_cases.auth.add_user_with_role_use_case import (
     AddUserWithRoleUseCase,
@@ -30,7 +30,7 @@ async def test_add_user_with_role_use_case() -> None:
         await use_case.execute(user_with_role)
 
     repo.add_user.assert_awaited_once_with(
-        UserInRepo(username=username, password_hash=password_hash, role=role)
+        UserInRepoAdd(username=username, password_hash=password_hash, role=role)
     )
     assert logger.info.call_count == 2
 
@@ -57,7 +57,7 @@ async def test_add_user_with_role_use_case_when_user_already_exists() -> None:
             await use_case.execute(user_with_role)
 
     repo.add_user.assert_awaited_once_with(
-        UserInRepo(username=username, password_hash=password_hash, role=role)
+        UserInRepoAdd(username=username, password_hash=password_hash, role=role)
     )
     assert logger.info.call_count == 2
 
@@ -81,7 +81,7 @@ async def test_add_user_use_case() -> None:
         await use_case.execute(user_add)
 
     repo.add_user.assert_awaited_once_with(
-        UserInRepo(username=username, password_hash=password_hash, role=role)
+        UserInRepoAdd(username=username, password_hash=password_hash, role=role)
     )
     assert logger.info.call_count == 2
 
@@ -108,6 +108,6 @@ async def test_add_user_use_case_when_user_already_exists() -> None:
             await use_case.execute(user_add)
 
     repo.add_user.assert_awaited_once_with(
-        UserInRepo(username=username, password_hash=password_hash, role=role)
+        UserInRepoAdd(username=username, password_hash=password_hash, role=role)
     )
     assert logger.info.call_count == 2

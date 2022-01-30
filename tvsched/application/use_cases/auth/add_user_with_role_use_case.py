@@ -2,18 +2,18 @@ from typing import Protocol
 
 from tvsched.application.interfaces import ILogger
 from tvsched.application.exceptions.auth import UserAlreadyExistsError
-from tvsched.application.models.auth import UserWithRoleAdd, UserInRepo
+from tvsched.application.models.auth import UserWithRoleAdd, UserInRepoAdd
 from tvsched.application.utils.auth import hash_password
 
 
 class IAddUserWithRoleUseCaseRepo(Protocol):
     """"""
 
-    async def add_user(self, user: UserInRepo) -> None:
+    async def add_user(self, user: UserInRepoAdd) -> None:
         """Adds user to repo.
 
         Args:
-            user (UserInRepo): data for adding user to repo.
+            user (UserInRepoAdd): data for adding user to repo.
 
         Raises:
             UserAlreadyExistsError: will be raised when user already exists.
@@ -45,7 +45,7 @@ class AddUserWithRoleUseCase:
 
         password_hash = hash_password(user.password)
 
-        user_in_repo = UserInRepo(
+        user_in_repo = UserInRepoAdd(
             username=user.username, password_hash=password_hash, role=user.role
         )
 
