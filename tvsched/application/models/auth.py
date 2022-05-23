@@ -46,3 +46,11 @@ class UserInRepo:
     username: str
     password_hash: str
     role: Role
+
+
+@dataclass(frozen=True)
+class UserInToken:
+    """Data about user in stored in token."""
+
+    id: uuid.UUID
+    role: Role

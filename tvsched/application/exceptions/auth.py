@@ -18,3 +18,14 @@ class UserAlreadyExistsError(Exception):
     @property
     def username(self) -> str:
         return self._username
+
+
+class InvalidUserPasswordError(Exception):
+    """Will be raised if user enter invalid password."""
+
+    def __init__(self, username: str) -> None:
+        self._username = username
+
+    @property
+    def username(self) -> str:
+        return self._username
